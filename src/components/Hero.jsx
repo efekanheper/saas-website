@@ -16,9 +16,26 @@ const logoAnimation = {
   },
 };
 
+const fadeInAnimation = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 1.5,
+      ease: "easeInOut",
+    },
+  },
+};
+
 const Hero = () => {
   return (
-    <section id="home" className="pt-28 lg:pt-36">
+    <motion.section
+      id="home"
+      className="pt-28 lg:pt-36"
+      initial="hidden"
+      animate="visible"
+      variants={fadeInAnimation}
+    >
       <div className="max-w-7xl mx-auto px-4 flex flex-col items-center text-center">
         <div className="mb-8 border-indigo-800 px-3 py-2 rounded-full text-xs">
           {HERO_CONTENT.badgeText}
@@ -34,10 +51,6 @@ const Hero = () => {
             </span>
           ))}
         </h1>
-        <p className="mt-6 text-neutral-400 max-w-xl">
-          {HERO_CONTENT.subHeading}
-        </p>
-
         <div className="py-10 w-full overflow-hidden">
           <p className="text-gray-400 text-center mb-8">
             {HERO_CONTENT.trustedByText}
@@ -67,7 +80,7 @@ const Hero = () => {
           />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
